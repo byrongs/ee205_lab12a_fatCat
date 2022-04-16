@@ -86,7 +86,7 @@ public: /////////// Static Public Member Functions ////////////////////
 
     static float 	convertWeight (float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept ;
 
-public: ////////// Static Public Attributes /////////////////////////
+public: ////////// Static Public Attributes //////////////////////////
 
     static const float 	UNKNOWN_WEIGHT = -1 ;
     static const float 	KILOS_IN_A_POUND = 0.453592 ;
