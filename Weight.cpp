@@ -35,24 +35,57 @@ Weight::Weight	( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, fl
 void Weight::dump()const ;
 
 
-float Weight::getWeight	()	const noexcept {
-    return Weight::Weight();
+
+
+float Weight::fromSlugToPound(float slug) noexcept {
+    return slug / SLUGS_IN_A_POUND ;
 }
 
 
+///////// Labels ///////////////////
 
+const string Weight::KILO_LABEL = "Kilo" ;
 
+const string Weight::POUND_LABEL = "Pound" ;
 
+const string Weight::SLUG_LABEL = "Slug" ;
 
+//////////////////////// Weight constructor with fields //////////////////
 
+Weight Weight::getWeight() const noexcept {
+    return Weight();
+}
 
+Weight::Weight(float newWeight) {
+    setWeight( newWeight ) ;
+}
 
+Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
+    setWeight( newUnitOfWeight ) ;
+}
 
+Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
+    setWeight( newWeight ) ;
+    setWeight( newUnitOfWeight ) ;
+}
 
+Weight::Weight(float newWeight, float newMaxWeight) {
+    setWeight( newWeight ) ;
+    setWeight( newMaxWeight ) ;
+}
 
+Weight::Weight(Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
+    setWeight( newUnitOfWeight ) ;
+    setWeight( newMaxWeight ) ;
+}
 
+Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) : Weight() {
+    setWeight( newWeight );
+    setWeight( newUnitOfWeight ) ;
+    setWeight( newMaxWeight ) ;
 
-
+    assert( validate() ) ;
+}
 
 
 

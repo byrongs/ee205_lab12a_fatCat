@@ -28,19 +28,13 @@ public:
     enum UnitOfWeight {POUND , KILO , SLUG };
 
 
-    Weight() noexcept;
-
-    Weight (float newWeight);
-
-    Weight (UnitOfWeight newUnitOfWeight) noexcept ;
-
-    Weight (float newWeight, UnitOfWeight newUnitOfWeight) ;
-
-    Weight (float newWeight, float newMaxWeight) ;
-
-    Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight) ;
-
-    Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight) ;
+    Weight() noexcept; /// a default weight
+    Weight (float newWeight); /// a weight with value
+    Weight (UnitOfWeight newUnitOfWeight) noexcept ; /// a weight with unit of weight
+    Weight (float newWeight, UnitOfWeight newUnitOfWeight) ; /// a weight with a value and new unit of weight
+    Weight (float newWeight, float newMaxWeight) ; /// a weight with value and maximum weight
+    Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight) ; /// A weight with a UnitOfWeight and a maximum weight
+    Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight) ; /// A weight with a value, UnitOfWeight and a maximum weight
 
 public:
 
@@ -50,7 +44,7 @@ public:
 
 public: ////////////////// Getters and Setters //////////////////////
 
-    float 	getWeight () const noexcept ;
+    Weight getWeight () const noexcept ;
 
     float 	getWeight (UnitOfWeight weightUnits) const noexcept ;
 
@@ -120,14 +114,26 @@ private: //////////// Private Attributes //////////////////////////
 
 };
 
-Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) : Weight() {
-    setWeight( newWeight );
-    setWeight( newUnitOfWeight ) ;
-    setWeight( newMaxWeight ) ;
-
-    assert( validate() ) ;
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

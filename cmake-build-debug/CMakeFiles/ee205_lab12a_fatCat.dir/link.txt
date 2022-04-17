@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o -o ee205_lab12a_fatCat 
+/Library/Developer/CommandLineTools/usr/bin/c++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o -o ee205_lab12a_fatCat 
