@@ -106,5 +106,68 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newM
     assert( validate() ) ;
 }
 
+/////////// Booleans ///////////
+
+bool Weight::isWeightKnown() const noexcept {
+    if(!isWeightKnown() ) {
+        throw invalid_argument(" The weight must be known")
+    }
+    return true;
+}
+
+bool Weight::hasMaxWeight() const noexcept {
+    if(!hasMaxWeight() ) {
+        throw invalid_argument(" The maximum weight must be known")
+    }
+    return true;
+}
+
+bool Weight::isWeightValid(float checkWeight) const noexcept {
+    if( bHasMax ) {
+        checkWeight <= maxWeight
+    }
+}
+
+void Weight::dump() const noexcept {
+
+}
 
 
+//////////////// Getters and Setters Defined //////////////////////////////////////
+
+float Weight::getWeight(Weight::UnitOfWeight weightUnits) const noexcept {
+    return weightUnits;
+}
+
+float Weight::getMaxWeight() const noexcept {
+    return maxWeight ;
+}
+
+Weight::UnitOfWeight Weight::getWeightUnit() const noexcept {
+    return Weight::POUND;
+}
+
+void Weight::setWeight(float newWeight) {
+    validate( newWeight ) ;
+    Weight:weight = newWeight ;
+}
+
+void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
+    validate( newWeight ) ;
+    Weight:weight = newWeight ;
+
+}
+
+
+
+
+
+
+
+
+bool Weight::validate() const noexcept {
+    if( newWeight <= 0 ) {
+        throw invalid_argument("The weight must be > 0");
+    }
+    return true ;
+}
