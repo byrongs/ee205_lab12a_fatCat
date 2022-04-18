@@ -190,6 +190,7 @@ void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
 
 }
 
+
 void Weight::setMaxWeight(float newMaxWeight) {
     if(newMaxWeight <= 0 ) {
         throw invalid_argument( "Max weight must be greater than zero")
