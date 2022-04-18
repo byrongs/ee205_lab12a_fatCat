@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/tmp/tmp.tgQgkKBq8V/Weight.cpp" "CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o" "gcc" "CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o.d"
-  "/tmp/tmp.tgQgkKBq8V/main.cpp" "CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o" "gcc" "CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o.d"
+  "/Users/alicesoriano/CLionProjects/ee205_lab12a_fatCat1/Weight.cpp" "CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o" "gcc" "CMakeFiles/ee205_lab12a_fatCat.dir/Weight.cpp.o.d"
+  "/Users/alicesoriano/CLionProjects/ee205_lab12a_fatCat1/main.cpp" "CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o" "gcc" "CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links.

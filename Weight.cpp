@@ -114,12 +114,32 @@ float Weight::fromPoundToSlug(const float pound) noexcept {
     return pound * SLUGS_IN_A_POUND ;
 }
 
-float fromWeight ;
-char fromUnit ;
-char toUnit ;
 
 float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit) noexcept {
-    return fromWeight, fromUnit, toUnit ;
+    if( toUnit == KILO ) {
+        if( fromUnit == POUND ) {
+            return fromPoundToKilogram(fromWeight) ;
+        }
+        if( fromUnit == SLUG ) {
+            return fromPoundToKilogram(fromSlugToPound( fromWeight ) );
+        }
+    }
+    if( toUnit == POUND ) {
+        if( fromUnit == KILO ) {
+            return fromKilogramToPound( fromWeight ) ;
+        }
+        if( fromUnit == SLUG ) {
+            return fromSlugToPound( fromWeight) ;
+        }
+    }
+    if( toUnit == SLUG ) {
+        if( fromUnit == POUND ) {
+            return fromPoundToSlug( fromWeight ) ;
+        }
+        if( fromUnit == KILO ) {
+            return fromPoundToSlug(fromKilogramToPound(fromWeight) ) ;
+        }
+    }
 }
 
 
@@ -264,3 +284,26 @@ bool Weight::validate() const noexcept {
     }
     return true ;
 }
+
+///////// Line Formatting //////////////////////////////////
+
+#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) (member) <<setw(52)
+
+///////////////// dump() //////////////////////////////////
+void Weight::dump() const noexceppt {
+    cout << "Weight test( 130, Weight::KILO, 29)" << endl;
+    cout << setw(80) << setfill('=') << "" << endl;
+    cout << setfill( ' ' );
+    cout << left;
+    cout << boolalpha;
+
+
+FORMAT_LINE( "Weight", "isKnown" ) << isWeightKnown() << endl;
+FORMAT_LINE( "Weight", "weight" ) << getWeight() << endl;
+FORMAT_LINE( "Weight", "unitOfWeight" ) << getWeightUnit << endl;
+FORMAT_LINE( "Weight", "hasMax" ) << hasMaxWeight() << endl;
+FORMAT_LINE( "Weight", "maxWeight" ) << getMaxWeight() << endl;
+
+}
+
+///////////////////////////////
