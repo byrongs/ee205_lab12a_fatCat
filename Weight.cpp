@@ -19,16 +19,71 @@
 
 /////////// Weight Constructors //////////////////////////////////////////////
 
+Weight::Weight() noexcept {
+    unitOfWeight = POUND;
+    weight = UNKNOWN_WEIGHT ;
+    maxWeight = UNKNOWN_WEIGHT ;
+}
 
-Weight::Weight	(	const Weight::UnitOfWeight 	newUnitOfWeight	) noexcept ;
+Weight::Weight(float newWeight) {
+    unitOfWeight = POUND ;
+    weight = UNKNOWN_WEIGHT ;
+    maxWeight = UNKNOWN_WEIGHT ;
+    bIsKnown = true;
+    if(isWeightValid(newWeight) == false ) {
+        throw std::out_of_range("The weight cannot be less than or equal to zero");
+    }
+}
 
-Weight::Weight	( float newWeight, const Weight::UnitOfWeight 	newUnitOfWeight ) ;
+Weight::Weight(const Weight::UnitOfWeight newUnitOfWeight) noexcept {
+    unitOfWeight= POUND ;
+    weight = UNKNOWN_WEIGHT ;
+    maxWeight = UNKNOWN_WEIGHT
+}
 
-Weight::Weight	( float newWeight, float newMaxWeight )	;
+Weight::Weight(float newWeight, const Weight::UnitOfWeight newUnitOfWeight) {
+    unitOfWeight = POUND ;
+    weight = UNKNOWN_WEIGHT ;
+    bIsKnown = true;
+    if(isWeightValid(newWeight) == false ) {
+        throw std::out_of_range("The weight cannot be less than or equal to zero");
+    }
+}
+Weight::Weight(float newWeight, float newMaxWeight) {
+    unitOfWeight = POUND ;
+    weight = UNKNOWN_WEIGHT ;
+    maxWeight = newMaxWeight ;
+    bIsKnown = true ;
+    if(isWeightValid(newWeight)==false) {
+        throw std::out_of_range("The weight cannot be less than or equal to zero");
+    }
+    if(newMaxWeight <= 0) {
+        throw std::out_of_range("The new max weight cannot be less than or equal to zero");
+    }
+}
 
-Weight::Weight	( const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight ) ;
-
-Weight::Weight	( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) ;
+Weight::Weight(const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
+    unitOfWeight = POUND ;
+    weight = UNKNOWN_WEIGHT ;
+    newMaxWeight = newMaxWeight ;
+    bHasMax = true;
+    if(newMaxWeight <= 0) {
+        throw std::out_of_range("The new max weight cannot be less than or equal to zero");
+    }
+}
+Weight::Weight(float newWeight, const Weight::UnitOfWeight newUnitofWeight, float newMaxWeight) {
+    unitOfWeight = POUND ;
+    weight = UNKNOWN_WEIGHT ;
+    maxWeight = newMaxWeight ;
+    bIsKnown = true;
+    bHasMax = true;
+    if(isWeightValid(newWeight)== false) {
+        throw std::out_of_range("The weight cannot be less than or equal to zero");
+    }
+    if(newMaxWeight <= 0) {
+        throw std::out_of_range("The max weight cannot be less than or equal to zero");
+    }
+}
 
 /// Once UnitOfWeight is set, it can't be changed.
 /// Once maxWeight is set, it can't be changed.
