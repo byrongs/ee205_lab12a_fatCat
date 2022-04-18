@@ -181,24 +181,26 @@ Weight::UnitOfWeight Weight::getWeightUnit() const noexcept {
 
 void Weight::setWeight(float newWeight) {
     validate( newWeight ) ;
-    Weight:weight = newWeight ;
+    Weight:Weight = newWeight ;
 }
 
 void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
     validate( newWeight ) ;
-    Weight:weight = newWeight ;
+    Weight:Weight = newWeight ;
 
+}
+
+void Weight::setMaxWeight(float newMaxWeight) {
+    if(newMaxWeight <= 0 ) {
+        throw invalid_argument( "Max weight must be greater than zero")
+    }
+    Weight:Weight = newMaxWeight ;
 }
 
 
 
-
-
-
-
-
 bool Weight::validate() const noexcept {
-    if( newWeight <= 0 ) {
+    if( weight <= 0 ) {
         throw invalid_argument("The weight must be > 0");
     }
     return true ;
