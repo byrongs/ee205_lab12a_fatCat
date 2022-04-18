@@ -17,8 +17,6 @@
 
 
 
-
-
 /////////// Weight Constructors //////////////////////////////////////////////
 
 
@@ -36,9 +34,30 @@ void Weight::dump()const ;
 
 
 
+/////////////////// Weight Conversions //////////////////////
 
-float Weight::fromSlugToPound(float slug) noexcept {
+float Weight::fromKilogramToPound(const float kilogram) noexcept {
+    return kilogram / KILOS_IN_A_POUND ;
+}
+
+float Weight::fromPoundToKilogram(const float pound) noexcept {
+    return pound * KILOS_IN_A_POUND ;
+}
+
+float Weight::fromSlugToPound(const float slug) noexcept {
     return slug / SLUGS_IN_A_POUND ;
+}
+
+float Weight::fromPoundToSlug(const float pound) noexcept {
+    return pound * SLUGS_IN_A_POUND ;
+}
+
+float fromWeight ;
+char fromUnit ;
+char toUnit ;
+
+float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit) noexcept {
+    return fromWeight, fromUnit, toUnit ;
 }
 
 
@@ -50,7 +69,7 @@ const string Weight::POUND_LABEL = "Pound" ;
 
 const string Weight::SLUG_LABEL = "Slug" ;
 
-//////////////////////// Weight constructor with fields //////////////////
+//////////////////////// Weight Setters //////////////////
 
 Weight Weight::getWeight() const noexcept {
     return Weight();
