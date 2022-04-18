@@ -15,7 +15,7 @@
 #include <iomanip>
 #include "Weight.h"
 
-
+using namespace std;
 
 /////////// Weight Constructors //////////////////////////////////////////////
 
@@ -30,7 +30,7 @@ Weight::Weight(float newWeight) {
     weight = UNKNOWN_WEIGHT ;
     maxWeight = UNKNOWN_WEIGHT ;
     bIsKnown = true;
-    if(isWeightValid(newWeight) == false ) {
+    if(!isWeightValid(newWeight)) {
         throw std::out_of_range("The weight cannot be less than or equal to zero");
     }
 }
@@ -45,7 +45,7 @@ Weight::Weight(float newWeight, const Weight::UnitOfWeight newUnitOfWeight) {
     unitOfWeight = POUND ;
     weight = UNKNOWN_WEIGHT ;
     bIsKnown = true;
-    if(isWeightValid(newWeight) == false ) {
+    if(!isWeightValid(newWeight)) {
         throw std::out_of_range("The weight cannot be less than or equal to zero");
     }
 }
@@ -54,7 +54,7 @@ Weight::Weight(float newWeight, float newMaxWeight) {
     weight = UNKNOWN_WEIGHT ;
     maxWeight = newMaxWeight ;
     bIsKnown = true ;
-    if(isWeightValid(newWeight)==false) {
+    if(!isWeightValid(newWeight)) {
         throw std::out_of_range("The weight cannot be less than or equal to zero");
     }
     if(newMaxWeight <= 0) {
@@ -77,7 +77,7 @@ Weight::Weight(float newWeight, const Weight::UnitOfWeight newUnitofWeight, floa
     maxWeight = newMaxWeight ;
     bIsKnown = true;
     bHasMax = true;
-    if(isWeightValid(newWeight)== false) {
+    if(!isWeightValid(newWeight)) {
         throw std::out_of_range("The weight cannot be less than or equal to zero");
     }
     if(newMaxWeight <= 0) {
@@ -137,30 +137,30 @@ Weight Weight::getWeight() const noexcept {
     return Weight();
 }
 
-Weight::Weight(float newWeight) {
+Weight::setWeight(float newWeight) {
     setWeight( newWeight ) ;
 }
 
-Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
+Weight::setWeight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
     setWeight( newUnitOfWeight ) ;
 }
 
-Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
+Weight::setWeight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
     setWeight( newWeight ) ;
     setWeight( newUnitOfWeight ) ;
 }
 
-Weight::Weight(float newWeight, float newMaxWeight) {
+Weight::setWeight(float newWeight, float newMaxWeight) {
     setWeight( newWeight ) ;
     setWeight( newMaxWeight ) ;
 }
 
-Weight::Weight(Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
+Weight::setWeight(Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
     setWeight( newUnitOfWeight ) ;
     setWeight( newMaxWeight ) ;
 }
 
-Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) : Weight() {
+Weight::setWeight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) : Weight() {
     setWeight( newWeight );
     setWeight( newUnitOfWeight ) ;
     setWeight( newMaxWeight ) ;
@@ -227,7 +227,10 @@ float Weight::getWeight(Weight::UnitOfWeight weightUnits) const noexcept {
 }
 
 float Weight::getMaxWeight() const noexcept {
-    return maxWeight ;
+    if(newMaxWeight()) {
+        return maxWeight ;
+    }
+    return UNKNOWN_WEIGHT ;
 }
 
 Weight::UnitOfWeight Weight::getWeightUnit() const noexcept {
