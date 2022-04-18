@@ -30,6 +30,13 @@ Weight::Weight	( const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight 
 
 Weight::Weight	( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) ;
 
+/// Once UnitOfWeight is set, it can't be changed.
+/// Once maxWeight is set, it can't be changed.
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ) : Weight( newUnitOfWeight ) {
+    setMaxWeight( newMaxWeight );
+    assert( validate() );
+}
+
 void Weight::dump()const ;
 
 
@@ -131,6 +138,31 @@ bool Weight::isWeightValid(float checkWeight) const noexcept {
 void Weight::dump() const noexcept {
 
 }
+///////////////// Operators /////////////////////////////////////////////
+bool Weight::operator==( const Weight& rhs_Weight ) const {
+    /// Remember to convert the two weight's units into a common unit!
+    /// Treat unknown weights as 0 (so we can sort them without dealing
+    /// with exceptions)
+    float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+    float rhs_weight = (rhs_Weight.bIsKnown) ?
+                       rhs_Weight.getWeight(Weight::POUND) : 0;
+
+    return lhs_weight == rhs_weight;
+}
+
+bool Weight::operator<( const Weight& rhs_Weight ) const {
+
+    float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+    float rhs_weight = (rhs_Weight.bIsKnown) ?
+                       rhs_Weight.getWeight(Weight::POUND) : 0;
+
+    return lhs_weight < rhs_weight ;
+}
+
+
+
+
+
 
 
 //////////////// Getters and Setters Defined //////////////////////////////////////

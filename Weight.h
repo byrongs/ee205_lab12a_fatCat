@@ -80,6 +80,12 @@ public: /////////// Static Public Member Functions ////////////////////
 
     static float 	convertWeight (float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept ;
 
+    bool operator>(const Weight &rhs) const;
+
+    bool operator<=(const Weight &rhs) const;
+
+    bool operator>=(const Weight &rhs) const;
+
 public: ////////// Static Public Attributes //////////////////////////
 
     static const float 	UNKNOWN_WEIGHT = -1 ;
@@ -106,6 +112,8 @@ private: //////////// Private Attributes //////////////////////////
 
 
 };
+
+
 
 
 
