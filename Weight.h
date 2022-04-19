@@ -38,13 +38,13 @@ public:
 
 public:
 
-    bool isWeightKnown () const noexcept ;
+    bool isWeightKnown () const ;
 
-    bool hasMaxWeight () const noexcept ;
+    bool hasMaxWeight () const  ;
 
 public: ////////////////// Getters and Setters //////////////////////
 
-    Weight getWeight () const noexcept ;
+    float   getWeight () const noexcept ;
 
     float 	getWeight (UnitOfWeight weightUnits) const noexcept ;
 
@@ -58,15 +58,15 @@ public: ////////////////// Getters and Setters //////////////////////
 
     bool 	isWeightValid (float checkWeight) const noexcept ;
 
-    bool 	validate () const noexcept ;
+    bool 	validate () ;
 
-    void 	dump () const noexcept ;
+    void 	dump() const noexcept ;
 
     bool 	operator== (const Weight &rhs_Weight) const ;
 
     bool 	operator< (const Weight &rhs_Weight) const ;
 
-    Weight & 	operator+= (float rhs_addToWeight) ;
+    Weight &operator+=(float rhs_addToWeight) ;
 
 public: /////////// Static Public Member Functions ////////////////////
 
@@ -78,22 +78,17 @@ public: /////////// Static Public Member Functions ////////////////////
 
     static float 	fromPoundToSlug (float pound) noexcept ;
 
-    static float 	convertWeight (float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept ;
+    static float 	convertWeight (float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) ;
 
-    bool operator>(const Weight &rhs) const;
-
-    bool operator<=(const Weight &rhs) const;
-
-    bool operator>=(const Weight &rhs) const;
 
 public: ////////// Static Public Attributes //////////////////////////
 
-    static const float 	UNKNOWN_WEIGHT = -1 ;
-    static const float 	KILOS_IN_A_POUND = 0.453592 ;
-    static const float 	SLUGS_IN_A_POUND = 0.031081 ;
-    static const std::string POUND_LABEL = "Pound" ;
-    static const std::string KILO_LABEL = "Kilo" ;
-    static const std::string SLUG_LABEL = "Slug" ;
+    static const float 	UNKNOWN_WEIGHT;
+    static const float 	KILOS_IN_A_POUND;
+    static const float 	SLUGS_IN_A_POUND;
+    static const std::string POUND_LABEL;
+    static const std::string KILO_LABEL;
+    static const std::string SLUG_LABEL;
 
 private: ///////////// Private Member Functions ////////////////////
 
@@ -112,6 +107,10 @@ private: //////////// Private Attributes //////////////////////////
 
 
 };
+
+//Weight &Weight::operator+=(float rhs_addToWeight) {
+    //return <#initializer#>;
+//}
 
 
 
